@@ -10,10 +10,12 @@ type AuthPostgres struct {
 	db *sqlx.DB
 }
 
+// NewAuthPostgres Конструктор для инициализации структуры AuthPostgres
 func NewAuthPostgres(db *sqlx.DB) *AuthPostgres {
 	return &AuthPostgres{db: db}
 }
 
+// CreateUser Надстройка над структурой AuthPostgres с функцией для создания пользователя
 func (r *AuthPostgres) CreateUser(user rest_todo.User) (int, error) {
 	var id int
 	query := fmt.Sprintf("INSERT INTO %s (name, username, password_hash) values ($1, $2, $3) RETURNING id", usersTable)

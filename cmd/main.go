@@ -45,8 +45,8 @@ func main() {
 }
 
 func initConfig() error {
-	viper.AddConfigPath("configs")
-	viper.SetConfigName("config")
+	viper.AddConfigPath("configs") // Папка с конфигом
+	viper.SetConfigName("config")  // Имя конфига
 
 	return viper.ReadInConfig()
 }

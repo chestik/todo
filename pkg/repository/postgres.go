@@ -22,13 +22,15 @@ type Config struct {
 	SSLMode  string
 }
 
+// NewPostgresDB Конструктор для установления соедениния с бд согласно данным из cfg
 func NewPostgresDB(cfg Config) (*sqlx.DB, error) {
+	// Установка соединения с БД
 	db, err := sqlx.Open("postgres", fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=%s",
 		cfg.Host, cfg.Port, cfg.Username, cfg.DBName, cfg.Password, cfg.SSLMode))
 	if err != nil {
 		return nil, err
 	}
-
+	// Проверка "пинга" от бд
 	if err := db.Ping(); err != nil {
 		return nil, err
 	}

@@ -6,6 +6,7 @@ import (
 	"rest_todo"
 )
 
+// signUp Создание пользователя
 func (h *Handler) signUp(ctx *gin.Context) {
 	var input rest_todo.User
 

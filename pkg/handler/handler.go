@@ -9,6 +9,7 @@ type Handler struct {
 	services *service.Service
 }
 
+// NewHandler Конструктор для основном хендлера
 func NewHandler(services *service.Service) *Handler {
 	return &Handler{services: services}
 }
